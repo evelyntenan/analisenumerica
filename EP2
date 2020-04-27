@@ -1,0 +1,55 @@
+def main():
+  n = input("Digite a dimensao da sua matriz nxn: ")  
+  n = int(n) 
+  a=[]
+  b=[]
+  c=[]
+  x=[]
+  y=[]
+  z=[]
+  resposta=[]
+  i=1
+  for i in range(n):
+     a.append(float(input("Informe os valores da diagonal principal: ")))
+  i=1
+  for i in range(n-1):
+     b.append(float(input("Informe os valores da subdiagonal: ")))
+  i=1
+  for i in range(n):
+     c.append(float(input("Informe os valores da matriz resposta: ")))
+  i=0
+  for i in range(n-1):
+     a[i+1]=a[i+1]-b[i]*b[i]/a[i]
+    
+  z.append(c[0])
+  k=1
+  while k<n:
+     z.append(c[k]-z[k-1]*b[k-1]/a[k-1])
+     k=k+1
+  k=0
+  while k<n:
+    y.append(z[k]/a[k])
+    k=k+1
+  i=0
+  k=n-1
+  x.append(y[n-1])
+  while k>0:
+    x.append(y[k-1]-x[i]*b[k-1]/a[k-1])
+    k=k-1
+    i=i+1
+  i=n-1
+  while i>=0:
+    resposta.append(x[i])
+    i=i-1
+  i=0
+  for i in range(n-1):
+    print("resposta", i," = ",resposta[i])
+  i=0
+  for i in range(n-2):
+    print("L",i," = ",b[i]/a[i])
+  i=0
+  for i in range(n-1):
+    print("D",i," = ",a[i])
+#precisa dessa indentação.
+if __name__ == "__main__":
+    main()
